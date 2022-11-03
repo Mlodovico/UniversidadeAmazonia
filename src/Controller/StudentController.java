@@ -6,32 +6,21 @@ import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-class student extends Student {
-    public String name;
-    public Integer np1;
-    public Integer np2;
-    public Integer repositionNote;
-    public Integer examNote;
-
-    public student(String name, Integer np1, Integer np2, Integer repositionNote, Integer examNote) {
-        super(name, np1, np2, repositionNote, examNote);
-    }
-};
 public class StudentController {
 
-    public void createStudent(student std) {
+    public void createStudent(Student std) {
         try {
             List<Student> list = new ArrayList<>();
 
-            if (std.name != "") {
-                if(std.np1 != null && std.np2 != null) {
-                        var lowerThanAverageCalc = (std.np1 + std.np2) / 2;
+            if (std.getName() != "") {
+                if(std.getNp1() != null && std.getNp2() != null) {
+                        var lowerThanAverageCalc = (std.getNp1() + std.getNp2()) / 2;
 
                         if (lowerThanAverageCalc >= 6) {
                             list.add(std);
                         } else {
-                            if (std.examNote != null) {
-                                
+                            if (std.getExamNote() != null) {
+                                //calc to declare final note
                             }
                         }
 

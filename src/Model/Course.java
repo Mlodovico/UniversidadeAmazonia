@@ -1,16 +1,16 @@
 package Model;
 
 public class Course {
-    private String studentName;
+    private String name;
     private Integer level;
     private Integer year;
 
-    public String getStudentName() {
-        return studentName;
+    public String getName() {
+        return name;
     }
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getLevel() {

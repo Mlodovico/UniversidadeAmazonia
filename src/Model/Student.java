@@ -8,7 +8,8 @@ public class Student {
     private Integer repositionNote;
     private Integer examNote;
 
-    public Student(String name, Integer np1, Integer np2, Integer repositionNote, Integer examNote) {
+    public Student(Integer id, String name, Integer np1, Integer np2, Integer repositionNote, Integer examNote) {
+         this.id = id;
          this.name = name;
          this.np1 = np1;
          this.np2 = np2;
