@@ -10,6 +10,7 @@ public class StudentController {
 
     public void createStudent(Student std) {
         try {
+            System.out.println(std);
             List<Student> list = new ArrayList<>();
 
             if (std.getName() != "") {

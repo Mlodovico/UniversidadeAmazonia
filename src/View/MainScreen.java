@@ -12,6 +12,7 @@ public class MainScreen extends JFrame {
 
     public MainScreen() {
         setContentPane(mainPanel);
+        setBounds(500, 500, 800, 450);
         setTitle("Interface Universidade Amazonia");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);

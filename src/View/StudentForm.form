@@ -26,13 +26,15 @@
           <text value="Name: "/>
         </properties>
       </component>
-      <component id="2548d" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="2548d" class="javax.swing.JTextField" binding="firstNameInput">
         <constraints>
           <grid row="1" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <component id="51538" class="javax.swing.JLabel">
         <constraints>
@@ -43,7 +45,7 @@
           <text value="Lastname: "/>
         </properties>
       </component>
-      <component id="fcd3f" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="fcd3f" class="javax.swing.JTextField" binding="lastNameInput">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -69,7 +71,7 @@
           <text value="NP2: "/>
         </properties>
       </component>
-      <component id="97a3" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+      <component id="97a3" class="javax.swing.JTextField" binding="np1Input">
         <constraints>
           <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -79,13 +81,15 @@
           <text value=""/>
         </properties>
       </component>
-      <component id="6f637" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+      <component id="6f637" class="javax.swing.JTextField" binding="np2Input">
         <constraints>
           <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <component id="c17a2" class="javax.swing.JButton" binding="createButton" default-binding="true">
         <constraints>
@@ -119,7 +123,7 @@
           <text value="Reposition Note: "/>
         </properties>
       </component>
-      <component id="f895" class="javax.swing.JTextField" default-binding="true">
+      <component id="f895" class="javax.swing.JTextField" binding="repositionNoteInput">
         <constraints>
           <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -136,13 +140,15 @@
           <text value="Exam Note: "/>
         </properties>
       </component>
-      <component id="4b726" class="javax.swing.JTextField" default-binding="true">
+      <component id="4b726" class="javax.swing.JTextField" binding="examNoteInput">
         <constraints>
           <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <vspacer id="e0868">
         <constraints>
@@ -166,7 +172,7 @@
           <text value="Course: "/>
         </properties>
       </component>
-      <component id="5ec18" class="javax.swing.JTextField" default-binding="true">
+      <component id="5ec18" class="javax.swing.JTextField" binding="courseInput">
         <constraints>
           <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
