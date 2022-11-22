@@ -78,7 +78,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value=""/>
+          <text value="0"/>
         </properties>
       </component>
       <component id="6f637" class="javax.swing.JTextField" binding="np2Input">
@@ -88,7 +88,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value=""/>
+          <text value="0"/>
         </properties>
       </component>
       <component id="c17a2" class="javax.swing.JButton" binding="createButton" default-binding="true">
@@ -129,7 +129,9 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value="0"/>
+        </properties>
       </component>
       <component id="84f7d" class="javax.swing.JLabel">
         <constraints>
@@ -147,7 +149,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value=""/>
+          <text value="0"/>
         </properties>
       </component>
       <vspacer id="e0868">

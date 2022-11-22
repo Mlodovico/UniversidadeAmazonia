@@ -4,6 +4,7 @@ import Controller.StudentController;
 import Model.Student;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -36,47 +37,43 @@ public class StudentForm extends JFrame {
                 String name = firstNameInput.getText();
                 String lastname = lastNameInput.getText();
                 String course = courseInput.getText();
-                String np1 = np1Input.getText();
-                String np2 = np2Input.getText();
-                String repositionNote = repositionNoteInput.getText();
+                Integer np1 = Integer.parseInt(np1Input.getText());
+                Integer np2 = Integer.parseInt(np2Input.getText());
+                Integer repositionNote = Integer.parseInt(repositionNoteInput.getText());
                 Integer examNote = Integer.parseInt(examNoteInput.getText());
 
-                if (np1 == "0") {
-                    System.out.println("Alooo");
+                if (checkBox1.isSelected() == true) {
+                    Student stdData = new Student(
+                            name,
+                            lastname,
+                            course,
+                            np1,
+                            np2,
+                            repositionNote,
+                            examNote
+                    );
+
+                    controller.createStudent(stdData);
+                    return;
                 }
 
+                if ((np1 + np2) / 2 >= 6) {
+                    Student stdData = new Student(
+                            name,
+                            lastname,
+                            course,
+                            np1,
+                            np2,
+                            0,
+                            0
+                    );
 
-//                if (np1 == "") {
-//                    PopupMessage popUp = new PopupMessage("Error: np1 note is missing");
-//                    popUp.getContentPane();
-//                } else if (np2 == "") {
-//                    PopupMessage popUp = new PopupMessage("Error: np2 note is missing");
-//                    popUp.getContentPane();                }
-//                if (checkBox1.isSelected()) {
-//                    Integer repositionNote = Integer.parseInt(repositionNoteInput.getText());
-//                    if (np1 == null || np2 == null) {
-//                        Student stdData = new Student(name, lastname, course, Integer.parseInt(np1), Integer.parseInt(np2), repositionNote, null);
-//                        return;
-//                    }
-//                }
+                    controller.createStudent(stdData);
+                    PopupMessage popupMessage = new PopupMessage("Estudante cadastrado com sucesso");
+                    Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+                    win.dispose();
+                }
 
-//                if ((np1 + np2)/ 2 < 6) {
-//                    System.out.println((np1 + np2)/ 2 >= 6);
-//                    Integer examNote = Integer.parseInt(examNoteInput.getText());
-//                    return;
-//                }
-
-                Student stdData = new Student(
-                        name,
-                        lastname,
-                        course,
-                        Integer.parseInt(np1),
-                        Integer.parseInt(np2),
-                        Integer.parseInt(repositionNote),
-                        examNote
-                );
-
-                controller.createStudent(stdData);
             }
         });
 

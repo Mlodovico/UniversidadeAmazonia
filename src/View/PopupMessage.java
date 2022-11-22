@@ -8,8 +8,7 @@ import java.awt.event.ActionListener;
 public class PopupMessage extends JFrame {
     private JPanel popupMessage;
     private JButton OKButton;
-    private JTextField textField1;
-    private JTextArea message;
+    private JLabel mesage;
 
     public PopupMessage(String msg) {
         setTitle("Mensagem");
@@ -17,7 +16,7 @@ public class PopupMessage extends JFrame {
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         setVisible(true);
         getContentPane().add(popupMessage);
-        message.append(msg);
+        mesage.setText(msg);
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
