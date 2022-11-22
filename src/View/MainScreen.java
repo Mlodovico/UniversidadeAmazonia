@@ -1,14 +1,18 @@
 package View;
 
+import Controller.StudentController;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainScreen extends JFrame {
+    StudentController controller = new StudentController();
     private JButton createButton;
     private JButton deleteButton;
     private JButton updateButton;
     private JPanel mainPanel;
+    private JScrollPane studentList;
 
     public MainScreen() {
         setContentPane(mainPanel);
@@ -16,6 +20,9 @@ public class MainScreen extends JFrame {
         setTitle("Interface Universidade Amazonia");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+
+//        studentList.
+
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 public class PopupMessage extends JFrame {
     private JPanel popupMessage;
     private JButton OKButton;
+    private JTextField textField1;
     private JTextArea message;
 
     public PopupMessage(String msg) {

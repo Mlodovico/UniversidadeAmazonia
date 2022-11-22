@@ -1,7 +1,9 @@
 package Model;
 
+import java.util.UUID;
+
 public class Student {
-    private Integer id;
+    private String id = UUID.randomUUID().toString();
     private String name;
     private String lastName;
     private String course;
@@ -19,7 +21,7 @@ public class Student {
         this.repositionNote = repositionNote;
         this.examNote = examNote;
     }
-    public Integer getId() {
+    public String getId() {
         return id;
     }
     public String getName() {

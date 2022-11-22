@@ -6,8 +6,10 @@ import Model.Student;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
-public class StudentForm extends JFrame{
+public class StudentForm extends JFrame {
     StudentController controller = new StudentController();
     private JTextField firstNameInput;
     private JTextField lastNameInput;
@@ -34,10 +36,14 @@ public class StudentForm extends JFrame{
                 String name = firstNameInput.getText();
                 String lastname = lastNameInput.getText();
                 String course = courseInput.getText();
-                Integer np1 = Integer.parseInt(np1Input.getText());
-                Integer np2 = Integer.parseInt(np2Input.getText());
-                Integer repositionNote = Integer.parseInt(repositionNoteInput.getText());
+                String np1 = np1Input.getText();
+                String np2 = np2Input.getText();
+                String repositionNote = repositionNoteInput.getText();
                 Integer examNote = Integer.parseInt(examNoteInput.getText());
+
+                if (np1 == "0") {
+                    System.out.println("Alooo");
+                }
 
 
 //                if (np1 == "") {
@@ -60,7 +66,16 @@ public class StudentForm extends JFrame{
 //                    return;
 //                }
 
-                Student stdData = new Student(name, lastname, course, np1, np2, repositionNote, examNote);
+                Student stdData = new Student(
+                        name,
+                        lastname,
+                        course,
+                        Integer.parseInt(np1),
+                        Integer.parseInt(np2),
+                        Integer.parseInt(repositionNote),
+                        examNote
+                );
+
                 controller.createStudent(stdData);
             }
         });
@@ -68,6 +83,45 @@ public class StudentForm extends JFrame{
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            }
+        });
+        np1Input.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent ke) {
+                String value = np1Input.getText();
+                int l = value.length();
+                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
+                    if (l < 2) {
+                        np1Input.setEditable(true);
+                    } else {
+                        np1Input.setEditable(false);
+                        PopupMessage message = new PopupMessage("Enter only 2 characters(0-10)");
+                        message.getContentPane();
+                    }
+                } else {
+                    np1Input.setEditable(false);
+                    PopupMessage message = new PopupMessage("Enter only numeric digits(0-9)");
+                    message.getContentPane();
+                }
+            }
+        });
+        np2Input.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent ke) {
+                String value = np2Input.getText();
+                int l = value.length();
+                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
+                    if (l < 2) {
+                        np2Input.setEditable(true);
+                    } else {
+                        np2Input.setEditable(false);
+
+                        np2Input.setText("Enter only 2 characters(0-10)");
+                    }
+                } else {
+                    np2Input.setEditable(false);
+                    np2Input.setText("Enter only numeric digits(0-9)");
+                }
             }
         });
     }
