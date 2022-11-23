@@ -72,6 +72,26 @@ public class StudentForm extends JFrame {
                     PopupMessage popupMessage = new PopupMessage("Estudante cadastrado com sucesso");
                     Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());
                     win.dispose();
+                } else {
+                    if(examNote != 0) {
+                        Student stdData = new Student(
+                                name,
+                                lastname,
+                                course,
+                                np1,
+                                np2,
+                                0,
+                                examNote
+                        );
+
+                        controller.createStudent(stdData);
+                        PopupMessage popupMessage = new PopupMessage("Estudante cadastrado com sucesso");
+                        Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+                        win.dispose();
+                        return;
+                    }
+
+                    PopupMessage popupMessage = new PopupMessage("Nota de exame final requisitada");
                 }
 
             }
@@ -80,6 +100,8 @@ public class StudentForm extends JFrame {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+                win.dispose();
             }
         });
         np1Input.addKeyListener(new KeyAdapter() {
