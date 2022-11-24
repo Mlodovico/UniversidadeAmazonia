@@ -113,12 +113,12 @@ public class StudentForm extends JFrame {
                     if (l < 2) {
                         np1Input.setEditable(true);
                     } else {
-                        np1Input.setEditable(false);
+                        np1Input.setText("0");
+
                         PopupMessage message = new PopupMessage("Enter only 2 characters(0-10)");
                         message.getContentPane();
                     }
                 } else {
-                    np1Input.setEditable(false);
                     PopupMessage message = new PopupMessage("Enter only numeric digits(0-9)");
                     message.getContentPane();
                 }
@@ -133,13 +133,14 @@ public class StudentForm extends JFrame {
                     if (l < 2) {
                         np2Input.setEditable(true);
                     } else {
-                        np2Input.setEditable(false);
+                        np2Input.setText("0");
 
-                        np2Input.setText("Enter only 2 characters(0-10)");
+                        PopupMessage message = new PopupMessage("Enter only 2 characters(0-10)");
+                        message.getContentPane();
                     }
                 } else {
-                    np2Input.setEditable(false);
-                    np2Input.setText("Enter only numeric digits(0-9)");
+                    PopupMessage message = new PopupMessage("Enter only numeric digits(0-9)");
+                    message.getContentPane();
                 }
             }
         });
