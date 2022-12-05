@@ -1,10 +1,12 @@
 package View;
 
 import Controller.StudentController;
+import Model.Student;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class MainScreen extends JFrame {
     StudentController controller = new StudentController();
@@ -12,7 +14,7 @@ public class MainScreen extends JFrame {
     private JButton deleteButton;
     private JButton updateButton;
     private JPanel mainPanel;
-    private JScrollPane studentList;
+    private JTable table1;
 
     public MainScreen() {
         setContentPane(mainPanel);
@@ -21,18 +23,35 @@ public class MainScreen extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
-//        studentList.
-
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 StudentForm stdForm = new StudentForm();
                 stdForm.getContentPane();
+
+                ArrayList<Student> list = controller.getStudentList();
+                System.out.println(list);
+            }
+        });
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(e);
+            }
+        });
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }
 
     public static void main(String[] args) {
         MainScreen mainScreen = new MainScreen();
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
