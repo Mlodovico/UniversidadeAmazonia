@@ -42,16 +42,13 @@ public class MainScreen extends JFrame {
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                UpdateForm updForm = new UpdateForm();
+                updForm.getContentPane();
             }
         });
     }
 
     public static void main(String[] args) {
         MainScreen mainScreen = new MainScreen();
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }
