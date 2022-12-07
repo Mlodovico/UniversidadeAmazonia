@@ -1,12 +1,11 @@
 package View;
 
 import Controller.StudentController;
-import Model.Student;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class MainScreen extends JFrame {
     StudentController controller = new StudentController();
@@ -14,7 +13,8 @@ public class MainScreen extends JFrame {
     private JButton deleteButton;
     private JButton updateButton;
     private JPanel mainPanel;
-    private JTable table1;
+    private JTable studentTable;
+    private JButton printOutButton;
 
     public MainScreen() {
         setContentPane(mainPanel);
@@ -23,14 +23,19 @@ public class MainScreen extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
+        Object [][] data = controller.getStudentList();
+        System.out.println(data);
+
+        studentTable.setModel(new DefaultTableModel(
+                data,
+                new String [] {"Complete Name", "Course", "NP1", "NP2", "Exam Note", "Reposition Note"}
+        ));
+
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 StudentForm stdForm = new StudentForm();
                 stdForm.getContentPane();
-
-                ArrayList<Student> list = controller.getStudentList();
-                System.out.println(list);
             }
         });
         deleteButton.addActionListener(new ActionListener() {

@@ -42,6 +42,8 @@ public class StudentForm extends JFrame {
                 Integer repositionNote = Integer.parseInt(repositionNoteInput.getText());
                 Integer examNote = Integer.parseInt(examNoteInput.getText());
 
+                controller.getStudentList();
+
                 if (checkBox1.isSelected() == true) {
                     Student stdData = new Student(
                             name,
@@ -84,6 +86,7 @@ public class StudentForm extends JFrame {
                                 examNote
                         );
 
+                        controller.getStudentList();
                         controller.createStudent(stdData);
                         PopupMessage popupMessage = new PopupMessage("Estudante cadastrado com sucesso");
                         Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());

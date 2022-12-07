@@ -2,12 +2,8 @@ package Controller;
 
 import Model.Student;
 
-import java.security.cert.Extension;
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class StudentController {
     List<Student> studentList = new ArrayList<>();
@@ -15,17 +11,26 @@ public class StudentController {
     public void createStudent(Student std) {
         try {
             studentList.add(std);
-            System.out.println(std.getName());
-            System.out.println("LISTA ESTUDANTES: " + studentList);
+            System.out.println(studentList);
         } catch (Exception err) {
             System.out.println("Error: " + err);
         }
     }
 
-    public ArrayList<Student> getStudentList() {
+    public Object[][] getStudentList() {
         try {
             System.out.println(studentList);
-            return (ArrayList<Student>) studentList;
+            Object[][] data = {};
+
+            for (int i = 1; i == studentList.size(); i++) {
+                Student student = studentList.get(i);
+                data = new Object[][]{
+                        {student.getName() + " " + student.getLastName(), student.getCourse(), student.getNp1(), student.getNp2(), student.getExamNote(), student.getRepositionNote()},
+                };
+                System.out.println(data);
+            }
+            System.out.println("LISTA DE ESTUDANTES FORMATADA" + data);
+            return data;
         } catch (Exception err) {
             System.out.println("Error: " + err);
             return null;
