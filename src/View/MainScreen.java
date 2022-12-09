@@ -28,7 +28,7 @@ public class MainScreen extends JFrame {
 
         studentTable.setModel(new DefaultTableModel(
                 data,
-                new String [] {"Complete Name", "Course", "NP1", "NP2", "Exam Note", "Reposition Note"}
+                new String [] {"Nome Completo", "Curso", "NP1", "NP2", "Nota de exame", "Nota de reposicao"}
         ));
 
         createButton.addActionListener(new ActionListener() {
@@ -49,6 +49,12 @@ public class MainScreen extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 UpdateForm updForm = new UpdateForm();
                 updForm.getContentPane();
+            }
+        });
+        printOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PrintOutPopUp printOutView = new PrintOutPopUp();
             }
         });
     }
