@@ -1,14 +1,17 @@
 package View;
 
 import Controller.StudentController;
+import Model.CSV;
 import Model.Student;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
 
 public class StudentForm extends JFrame {
     StudentController controller = new StudentController();
@@ -24,7 +27,7 @@ public class StudentForm extends JFrame {
     private JTextField repositionNoteInput;
     private JTextField examNoteInput;
 
-    public StudentForm() {
+    public StudentForm(DefaultTableModel defaultTableModel, JTable studentTable) {
         setTitle("Cadastro de Estudante");
         setBounds(500, 300, 380, 450);
         setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
@@ -34,68 +37,59 @@ public class StudentForm extends JFrame {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String name = firstNameInput.getText();
-                String lastname = lastNameInput.getText();
-                String course = courseInput.getText();
-                Integer np1 = Integer.parseInt(np1Input.getText());
-                Integer np2 = Integer.parseInt(np2Input.getText());
-                Integer repositionNote = Integer.parseInt(repositionNoteInput.getText());
-                Integer examNote = Integer.parseInt(examNoteInput.getText());
+                Student student = new Student();
+                CSV csv = new CSV();
 
-                controller.getStudentList();
+                student.setName(firstNameInput.getText() + " " + lastNameInput.getText());
+                student.setCourse(courseInput.getText());
+                student.setNp1(Integer.parseInt(np1Input.getText()));
+                student.setNp2(Integer.parseInt(np2Input.getText()));
+                student.setRepositionNote(Integer.parseInt(repositionNoteInput.getText()));
+                student.setExamNote(Integer.parseInt(examNoteInput.getText()));
 
-                if (checkBox1.isSelected() == true) {
-                    Student stdData = new Student(
-                            name,
-                            lastname,
-                            course,
-                            np1,
-                            np2,
-                            repositionNote,
-                            examNote
-                    );
+//                controller.createStudent(student);
+                defaultTableModel.addRow(new Object[]{student.getName(), student.getNp1(), student.getNp2(), student.getExamNote(), student.getRepositionNote()});
 
-                    controller.createStudent(stdData);
-                    return;
-                }
+                    csv.write("/Users/murilolodovico/Desktop/university/APS/2/Universidade Amazonia/src/CSV_STUDENTS_PER_COURSE_DATA.csv",student, "studentPerCourseData");
 
-                if ((np1 + np2) / 2 >= 6) {
-                    Student stdData = new Student(
-                            name,
-                            lastname,
-                            course,
-                            np1,
-                            np2,
-                            0,
-                            0
-                    );
 
-                    controller.createStudent(stdData);
-                    PopupMessage popupMessage = new PopupMessage("Estudante cadastrado com sucesso");
-                    Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());
-                    win.dispose();
-                } else {
-                    if(examNote != 0) {
-                        Student stdData = new Student(
-                                name,
-                                lastname,
-                                course,
-                                np1,
-                                np2,
-                                0,
-                                examNote
-                        );
-
-                        controller.getStudentList();
-                        controller.createStudent(stdData);
-                        PopupMessage popupMessage = new PopupMessage("Estudante cadastrado com sucesso");
-                        Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());
-                        win.dispose();
-                        return;
-                    }
-
-                    PopupMessage popupMessage = new PopupMessage("Nota de exame final requisitada");
-                }
+//                if ((np1 + np2) / 2 >= 6) {
+//                    Student stdData = new Student(
+//                            name,
+//                            lastname,
+//                            course,
+//                            np1,
+//                            np2,
+//                            0,
+//                            0
+//                    );
+//
+//                    controller.createStudent(stdData);
+//                    PopupMessage popupMessage = new PopupMessage("Estudante cadastrado com sucesso");
+//                    Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+//                    win.dispose();
+//                } else {
+//                    if(examNote != 0) {
+//                        Student stdData = new Student(
+//                                name,
+//                                lastname,
+//                                course,
+//                                np1,
+//                                np2,
+//                                0,
+//                                examNote
+//                        );
+//
+//                        controller.getStudentList();
+//                        controller.createStudent(stdData);
+//                        PopupMessage popupMessage = new PopupMessage("Estudante cadastrado com sucesso");
+//                        Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+//                        win.dispose();
+//                        return;
+//                    }
+//
+//                    PopupMessage popupMessage = new PopupMessage("Nota de exame final requisitada");
+//                }
 
             }
         });
@@ -147,6 +141,10 @@ public class StudentForm extends JFrame {
                 }
             }
         });
+    }
+
+    public StudentForm() {
+
     }
 
     public static void main(String[] args) {

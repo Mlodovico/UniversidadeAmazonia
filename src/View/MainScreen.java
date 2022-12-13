@@ -21,6 +21,10 @@ public class MainScreen extends JFrame {
     private JTable studentTable;
     private JButton printOutButton;
 
+    public void updateTable(DefaultTableModel defaultTableModel) {
+        studentTable.setModel(defaultTableModel);
+    }
+
     public MainScreen() throws FileNotFoundException {
 
         List<List<String>> student = CSV.read("/Users/murilolodovico/Desktop/university/APS/2/Universidade Amazonia/src/CSV_STUDENT_DATA.csv");
@@ -39,12 +43,12 @@ public class MainScreen extends JFrame {
         Table defaultTableModel = new Table(new String[] {"Nome Completo", "NP1", "NP2", "Nota de exame", "Nota de reposicao"});
         defaultTableModel.fillStudentTable(data);
 
-        studentTable.setModel(defaultTableModel.getTableModel());
+        updateTable(defaultTableModel.getTableModel());
 
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StudentForm stdForm = new StudentForm();
+                StudentForm stdForm = new StudentForm(defaultTableModel.getTableModel(), studentTable);
                 stdForm.getContentPane();
             }
         });
