@@ -12,6 +12,10 @@ public class Student {
     private Integer repositionNote;
     private Integer examNote;
 
+    public Student() {
+
+    }
+
     public Student(String name, String lastName, String course, Integer np1, Integer np2, Integer repositionNote, Integer examNote) {
         this.name = name;
         this.lastName = lastName;
@@ -24,6 +28,7 @@ public class Student {
     public String getId() {
         return id;
     }
+    public void setId(String id) { this.id = id; }
     public String getName() {
         return name;
     }
@@ -78,5 +83,9 @@ public class Student {
 
     public void setExamNote(Integer examNote) {
         this.examNote = examNote;
+    }
+
+    public String getCompleteName() {
+        return this.getName() + " " + this.getLastName();
     }
 }
