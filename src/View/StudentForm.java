@@ -86,7 +86,9 @@ public class StudentForm extends JFrame {
                         student.setExamNote(examNote);
 
                         controller.createStudent(defaultTableModel, student);
+
                         PopupMessage popupMessage = new PopupMessage("Estudante cadastrado com sucesso");
+
                         Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());
                         win.dispose();
                         return;

@@ -1,14 +1,10 @@
 package Controller;
 
-import Controller.Hooks.TransformDataToCSV;
 import Model.CSV;
 import Model.Course;
 import Model.Student;
 
 import javax.swing.table.DefaultTableModel;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +48,8 @@ public class StudentController {
         try {
             defaultTableModel.addRow(new Object[]{student.getName(), student.getNp1(), student.getNp2(), student.getExamNote(), student.getRepositionNote()});
             csv.write("/Users/murilolodovico/Desktop/university/APS/2/Universidade Amazonia/src/CSV_STUDENTS_PER_COURSE_DATA.csv",student, "studentPerCourseData");
+            csv.write("/Users/murilolodovico/Desktop/university/APS/2/Universidade Amazonia/src/CSV_STUDENT_DATA.csv", student, "studentData");
+            csv.write("/Users/murilolodovico/Desktop/university/APS/2/Universidade Amazonia/src/CSV_COURSES_DATA.csv", student, "courseData");
         } catch (Exception err) {
             System.out.println("Error: " + err);
         }
