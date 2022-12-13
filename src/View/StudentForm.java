@@ -38,58 +38,62 @@ public class StudentForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Student student = new Student();
-                CSV csv = new CSV();
 
-                student.setName(firstNameInput.getText() + " " + lastNameInput.getText());
-                student.setCourse(courseInput.getText());
-                student.setNp1(Integer.parseInt(np1Input.getText()));
-                student.setNp2(Integer.parseInt(np2Input.getText()));
-                student.setRepositionNote(Integer.parseInt(repositionNoteInput.getText()));
-                student.setExamNote(Integer.parseInt(examNoteInput.getText()));
+                String name = firstNameInput.getText();
+                String lastname = lastNameInput.getName();
+                Integer np1 = Integer.parseInt(np1Input.getText());
+                Integer np2 = Integer.parseInt(np2Input.getText());
+                Integer examNote = Integer.parseInt(examNoteInput.getText());
+                Integer repositionNote = Integer.parseInt(repositionNoteInput.getText());
 
-//                controller.createStudent(student);
-                defaultTableModel.addRow(new Object[]{student.getName(), student.getNp1(), student.getNp2(), student.getExamNote(), student.getRepositionNote()});
+//                student.setName(firstNameInput.getText() + " " + lastNameInput.getText());
+//                student.setCourse(courseInput.getText());
+//                student.setNp1(np1);
+//                student.setNp2(Integer.parseInt(np2Input.getText()));
+//                student.setRepositionNote(Integer.parseInt(repositionNoteInput.getText()));
+//                student.setExamNote(Integer.parseInt(examNoteInput.getText()));
 
-                    csv.write("/Users/murilolodovico/Desktop/university/APS/2/Universidade Amazonia/src/CSV_STUDENTS_PER_COURSE_DATA.csv",student, "studentPerCourseData");
+                if (firstNameInput.getText().equals("") || lastNameInput.getText().equals("")) {
+                    PopupMessage popupMessage = new PopupMessage("Nome e sobrenome obrigatorios");
+                    return;
+                }
 
+                if (courseInput.getText().equals("")) {
+                    PopupMessage popupMessage = new PopupMessage("Curso obrigatorio");
+                    return;
+                }
 
-//                if ((np1 + np2) / 2 >= 6) {
-//                    Student stdData = new Student(
-//                            name,
-//                            lastname,
-//                            course,
-//                            np1,
-//                            np2,
-//                            0,
-//                            0
-//                    );
-//
-//                    controller.createStudent(stdData);
-//                    PopupMessage popupMessage = new PopupMessage("Estudante cadastrado com sucesso");
-//                    Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());
-//                    win.dispose();
-//                } else {
-//                    if(examNote != 0) {
-//                        Student stdData = new Student(
-//                                name,
-//                                lastname,
-//                                course,
-//                                np1,
-//                                np2,
-//                                0,
-//                                examNote
-//                        );
-//
-//                        controller.getStudentList();
-//                        controller.createStudent(stdData);
-//                        PopupMessage popupMessage = new PopupMessage("Estudante cadastrado com sucesso");
-//                        Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());
-//                        win.dispose();
-//                        return;
-//                    }
-//
-//                    PopupMessage popupMessage = new PopupMessage("Nota de exame final requisitada");
-//                }
+                if ((np1 + np2) / 2 >= 6) {
+                    student.setName(firstNameInput.getText() + " " + lastNameInput.getText());
+                    student.setCourse(courseInput.getText());
+                    student.setNp1(np1);
+                    student.setNp2(np2);
+                    student.setRepositionNote(0);
+                    student.setExamNote(0);
+
+                    controller.createStudent(defaultTableModel, student);
+
+                    PopupMessage popupMessage = new PopupMessage("Estudante cadastrado com sucesso");
+                    Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+                    win.dispose();
+                } else {
+                    if(examNote != 0) {
+                        student.setName(firstNameInput.getText() + " " + lastNameInput.getText());
+                        student.setCourse(courseInput.getText());
+                        student.setNp1(np1);
+                        student.setNp2(np2);
+                        student.setRepositionNote(0);
+                        student.setExamNote(examNote);
+
+                        controller.createStudent(defaultTableModel, student);
+                        PopupMessage popupMessage = new PopupMessage("Estudante cadastrado com sucesso");
+                        Window win = SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+                        win.dispose();
+                        return;
+                    }
+
+                    PopupMessage popupMessage = new PopupMessage("Nota de exame final requisitada");
+                }
 
             }
         });

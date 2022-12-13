@@ -1,9 +1,11 @@
 package Controller;
 
 import Controller.Hooks.TransformDataToCSV;
+import Model.CSV;
 import Model.Course;
 import Model.Student;
 
+import javax.swing.table.DefaultTableModel;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +15,8 @@ import java.util.List;
 public class StudentController {
 
     List<Student> studentList;
+    CSV csv = new CSV();
+
     public StudentController() {
         this.studentList = new ArrayList<>();
     }
@@ -44,24 +48,14 @@ public class StudentController {
         this.studentList = students;
     }
 
-    public void createStudent(Student std) {
+    public void createStudent(DefaultTableModel defaultTableModel, Student student) {
         try {
-            studentList.add(std);
-            System.out.println(studentList);
+            defaultTableModel.addRow(new Object[]{student.getName(), student.getNp1(), student.getNp2(), student.getExamNote(), student.getRepositionNote()});
+            csv.write("/Users/murilolodovico/Desktop/university/APS/2/Universidade Amazonia/src/CSV_STUDENTS_PER_COURSE_DATA.csv",student, "studentPerCourseData");
         } catch (Exception err) {
             System.out.println("Error: " + err);
         }
     }
-
-//    public void givenDataArray_whenConvertToCSV_thenOutputCreated() throws IOException {
-//        File csvOutputFile = new File(CSV_FILE_NAME);
-//        try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
-//            studentList.stream()
-//                    .map(this::csvConvert)
-//                    .forEach(pw::println);
-//        }
-//        assertTrue(csvOutputFile.exists());
-//    }
 
     public List<Student> getStudentList() {
         return studentList;
