@@ -7,8 +7,7 @@ import Model.Table;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +35,7 @@ public class MainScreen extends JFrame {
         setTitle("Interface Universidade Amazonia");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        studentTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         StudentController controller = new StudentController(student, studentPerCourse);
         List<Student> data = controller.getStudentList();
@@ -55,20 +55,50 @@ public class MainScreen extends JFrame {
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(e);
+                if(studentTable.getSelectedRow() != -1) {
+                    try {
+                        controller.deleteStudent(studentTable.getSelectedRow());
+                        defaultTableModel.getTableModel().removeRow(studentTable.getSelectedRow());
+                    } catch (Exception err) {
+                        throw err;
+                    }
+
+                }
             }
         });
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                UpdateForm updForm = new UpdateForm();
-                updForm.getContentPane();
+//                for(int i = 0; defaultTableModel.getTableModel() <= i; i++) {
+//
+//                }
+                if(studentTable.getSelectedRow() != -1) {
+                    try {
+                        controller.updateStudent(studentTable.getSelectedRow(), "DATA");
+                    } catch (Exception err) {
+                        throw err;
+                    }
+
+                }
             }
         });
         printOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PrintOutPopUp printOutView = new PrintOutPopUp();
+            }
+        });
+        studentTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                DefaultTableModel defaultTableModel1 = (DefaultTableModel)studentTable.getModel();
+                int selectedRowIndex = studentTable.getSelectedRow();
+                int cellSelectionModel = studentTable.getSelectedColumn();
+
+
+
             }
         });
     }
