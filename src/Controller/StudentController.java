@@ -26,7 +26,6 @@ public class StudentController {
     }
     public StudentController(List<List<String>> studentListByCSV, List<List<String>> studentPerCourseListByCSV) {
         List<Student> students = new ArrayList<>();
-        List<Course> courses = new ArrayList<>();
 
         for (int i = 1; i < studentListByCSV.size(); i ++) {
             Student student = new Student();
@@ -59,26 +58,17 @@ public class StudentController {
         return studentList;
     }
 
-    public void deleteStudent(String id) {
+    public void deleteStudent(int selectedRow) {
         try {
-            for (int i = 0; i == studentList.size(); i++) {
-
-                Student std = studentList.get(i);
-
-                if (std.getId() == id) {
-                    studentList.remove(i);
-                    System.out.println("Success delete");
-                    return;
-                }
-            }
+            csv.delete("/Users/murilolodovico/Desktop/university/APS/2/Universidade Amazonia/src/CSV_STUDENT_DATA.csv", selectedRow);
         } catch (Exception err) {
             System.out.println("Error: " + err);
         }
     }
 
-    public void updateStudent() {
+    public void updateStudent(int selectedRow, Object data) {
         try {
-
+            csv.update(selectedRow, data);
         } catch (Exception err) {
             System.out.println("Error: " + err);
         }

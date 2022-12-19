@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,6 +24,31 @@ public class CSV {
             return records;
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void delete(String path, int selectedRow) throws IOException {
+        File file = new File(path);
+        List<List<String>> records = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(";");
+                records.add(Arrays.asList(values));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void update(int selectedRow, Object data) {
+        String path = "/Users/murilolodovico/Desktop/university/APS/2/Universidade Amazonia/src/CSV_STUDENTS_PER_COURSE_DATA.csv";
+
+        try(BufferedReader br = new BufferedReader(new FileReader(path))) {
+
+        } catch (IOException err) {
+            throw new RuntimeException(err);
         }
     }
 
